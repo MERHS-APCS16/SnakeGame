@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakegame;
+package snakeworld;
+
+import javax.swing.JFrame;
+import snakeworld.SnakeWorld;
 
 /**
  *
- * @author Connor Coale User AC
+ * @author Ledyard
  */
 public class SnakeMain {
 
@@ -15,8 +18,16 @@ public class SnakeMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        SnakeWorld world = new SnakeWorld(100, 100);
+
         
+        SnakePanel panel = new SnakePanel(world);     
+        frame.getContentPane().add(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        panel.run();
     }
     
 }
-
