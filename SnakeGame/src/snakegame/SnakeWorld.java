@@ -25,7 +25,7 @@ public class SnakeWorld {
         }
     }
     public void foodEaten(){
-        
+        this.food.generateNewLocation(snake);
     }
     
     public int getNumCols(){
