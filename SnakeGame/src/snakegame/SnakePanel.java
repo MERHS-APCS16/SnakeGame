@@ -9,6 +9,8 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -46,17 +48,55 @@ public class SnakePanel extends JPanel {
 
         }
     
+    public void KeyPressed(KeyEvent e){
+        if (e.getKeyCode() == (KeyEvent.VK_S) ) {
+            
+            world.getSnake().setDirection(3);
+            //System.out.println("Down arrow pressed") ;
+        }
+        if (e.getKeyCode() == (KeyEvent.VK_W) ) {
+           
+            world.getSnake().setDirection(1);
+            //System.out.println("Down arrow pressed") ;
+        }
+          if (e.getKeyCode() == (KeyEvent.VK_D) ) {
+           
+            world.getSnake().setDirection(2);
+            //System.out.println("Down arrow pressed") ;
+        }
+        if (e.getKeyCode() == (KeyEvent.VK_A) ) {
+            
+            world.getSnake().setDirection(4);
+            //System.out.println("Down arrow pressed") ;
+        }
+        repaint();
+        
+    }
+    
+    public void keyTyped(){
+        //not used   
+    }
+    
+    public void KeyRealeased(KeyEvent e){
+        //not used
+    }
+    
     public void Draw (Graphics g) {   
-        for (int r = 0; r < world; r++){
-            for (int c = 0; c < world; c++){
-                if(world.getGrid [r][c].equals null){
+        for (int r = 0; r < world.getWorld().length; r++){
+            for (int c = 0; c < (world.getWorld())[0].length; c++){
+ 
+                if(world.getBlockType(new Location (r,c)).equals("Block")){
                     g.setColor(Color.WHITE);
                 }
+
                 else{
-                   g.setColor((world.getGrid [r][c]).getColor ());
+                   g.setColor((world.getWorld()[r][c]).color);
                 }
-                g.setColor(Color.RED);
-                g.fillRect(bodyX, bodyY, bodyWidth, bodyHeight);
+                
+                int blockHight = (hight) / (world.getWorld().length);
+                int blockWidth = (width) / (world.getWorld()[0].length);
+
+                g.fillRect((r * blockWidth), (c* blockHight), blockWidth, blockHight);
             }
 
         }
