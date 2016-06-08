@@ -26,7 +26,7 @@ public class SnakePanel extends JPanel {
         super();
         world = wrd;
         setPreferredSize(new Dimension(hight, width));
-        setBackground(Color.WHITE);
+        setBackground(Color.GREEN);
         setFocusable(true); 
         requestFocus();
     }
@@ -43,9 +43,8 @@ public class SnakePanel extends JPanel {
     }
     
     public void paintComponent(Graphics g) {
-        super.paintComponent(g); 
-        //door 1
-
+        super.paintComponent(g);
+        Draw(g);
         }
     
     public void KeyPressed(KeyEvent e){
@@ -86,7 +85,7 @@ public class SnakePanel extends JPanel {
             for (int c = 0; c < (world.getWorld())[0].length; c++){
  
                 if(world.getBlockType(new Location (r,c)).equals("Block")){
-                    g.setColor(Color.WHITE);
+                    g.setColor(Color.RED);
                 }
 
                 else{
@@ -96,7 +95,7 @@ public class SnakePanel extends JPanel {
                 int blockHight = (hight) / (world.getWorld().length);
                 int blockWidth = (width) / (world.getWorld()[0].length);
 
-                g.fillRect((r * blockWidth), (c* blockHight), blockWidth, blockHight);
+                g.fillRect((r * blockWidth), (c * blockHight), blockWidth, blockHight);
             }
 
         }
