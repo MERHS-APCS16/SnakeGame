@@ -46,7 +46,7 @@ public class Snake {
         //moves the tail block in front of the head block using direction as a guide
         Location preTailLoc = this.getTailBlock().getLocation();
         world.setToBlock(preTailLoc);
-        this.getTailBlock().moveBlock(this.getTailBlock().getNextLocationInDirection(direction));
+        this.getTailBlock().moveBlock(this.getHeadBlock().getNextLocationInDirection(direction));
         String blockType = world.getBlockType(this.getHeadBlock().getLocation());
         switch (blockType){
             case "SnakeBlock":
@@ -55,7 +55,8 @@ public class Snake {
             case "FoodBlock":
                 this.addBlocks();
         }
-        snakeList.set(0, snakeList.remove(snakeList.size() - 1));
+        world.setToSnakeBlock(this.getHeadBlock().getLocation());
+        snakeList.add(0, snakeList.remove(snakeList.size() - 1));
         
 
     }
