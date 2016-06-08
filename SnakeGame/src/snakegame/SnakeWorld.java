@@ -55,7 +55,9 @@ public class SnakeWorld {
     public Snake getSnake(){
         return snake;
     }
-    
+    public Block[][] getWorld(){
+        return world;
+    }
     public void init() {
         int randRow;
         int randCol;
