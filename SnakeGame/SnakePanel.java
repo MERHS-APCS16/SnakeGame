@@ -84,13 +84,13 @@ public class SnakePanel extends JPanel {
         for (int r = 0; r < world.getWorld().length; r++){
             for (int c = 0; c < (world.getWorld())[0].length; c++){
  
-                if(world.getBlockType(new Location (r,c)).equals("Block")){
-                    g.setColor(Color.RED);
-                }
+                //if(world.getBlockType(new Location (r,c)).equals("Block")){
+                    //g.setColor(Color.RED);
+                //}
 
-                else{
+                //else{
                    g.setColor((world.getWorld()[r][c]).color);
-                }
+                //}
                 
                 int blockHight = (hight) / (world.getWorld().length);
                 int blockWidth = (width) / (world.getWorld()[0].length);

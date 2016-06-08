@@ -19,7 +19,7 @@ public class SnakeMain {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         SnakeWorld world = new SnakeWorld(100, 100);
-
+        world.init();
         
         SnakePanel panel = new SnakePanel(world);     
         frame.getContentPane().add(panel);
