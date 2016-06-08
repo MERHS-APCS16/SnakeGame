@@ -29,11 +29,11 @@ public class SnakeWorld {
     }
     
     public int getNumCols(){
-        return 0;
+        return world[0].length;
     }
     
     public int getNumRows(){
-        
+        return world.length;
     }
     
     public String getBlockType(Location loc){
