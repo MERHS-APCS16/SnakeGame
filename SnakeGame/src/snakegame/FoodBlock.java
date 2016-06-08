@@ -15,12 +15,12 @@ public class FoodBlock extends Block {
         private SnakeWorld world;
     public FoodBlock(int r, int c) {
         location = new Location(r, c);
-        color = Color.BLUE;
+        color = Color.ORANGE;
         
     }
 
     public FoodBlock() {
-        color = Color.BLUE;
+        color = Color.ORANGE;
     }
     
     public FoodBlock(SnakeWorld s){

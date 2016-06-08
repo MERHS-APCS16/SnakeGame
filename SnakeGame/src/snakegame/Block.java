@@ -14,12 +14,15 @@ public class Block {
 
     public Block() {
         location = new Location();
+        color = Color.RED;
     }
     public Block(Location loc){
         location = loc;
+        color = Color.RED;
     }
     public Block(int r, int c) {
         location = new Location(r, c);
+        color = Color.RED;
     }
 
     public int getR() {
