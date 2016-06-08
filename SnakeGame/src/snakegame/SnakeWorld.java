@@ -14,6 +14,7 @@ public class SnakeWorld {
     private Block[][] world;
     private Snake snake;
     private int score;
+    private FoodBlock food;
 
     public SnakeWorld(int numRows, int numCols) {
         world = new Block[numRows][numCols];
@@ -26,6 +27,15 @@ public class SnakeWorld {
     public void foodEaten(){
         
     }
+    
+    public int getNumCols(){
+        return 0;
+    }
+    
+    public int getNumRows(){
+        
+    }
+    
     public String getBlockType(Location loc){
         if (world[loc.getR()][loc.getC()] instanceof FoodBlock){
             return "FoodBlock";
@@ -58,6 +68,7 @@ public class SnakeWorld {
         int randDirection = (int)(Math.random() * 4 + 1);
         snake = new Snake(list, randDirection, this);
         score = 0;
+        food = new FoodBlock(this);
     }
     public void refresh(){
         snake.moveSnake();
