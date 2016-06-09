@@ -29,6 +29,7 @@ public class Snake {
      *
      * @param newList
      * @param dir
+     * @param world
      */
     public Snake(ArrayList<SnakeBlock> newList, int dir, SnakeWorld world) {
         snakeList = newList;
@@ -46,7 +47,11 @@ public class Snake {
         //moves the tail block in front of the head block using direction as a guide
         Location preTailLoc = this.getTailBlock().getLocation();
         world.setToBlock(preTailLoc);
-        this.getTailBlock().moveBlock(this.getHeadBlock().getNextLocationInDirection(direction));
+        int newR = Math.abs(this.getHeadBlock().getNextLocationInDirection(direction).getR() + this.world.getNumRows()) % this.world.getNumRows();
+        int newC = Math.abs(this.getHeadBlock().getNextLocationInDirection(direction).getC() + this.world.getNumCols()) % this.world.getNumCols();
+        Location newLocation = new Location(newR, newC);
+        
+        this.getTailBlock().moveBlock(newLocation);
         String blockType = world.getBlockType(this.getHeadBlock().getLocation());
         switch (blockType){
             case "SnakeBlock":
@@ -54,9 +59,15 @@ public class Snake {
                 
             case "FoodBlock":
                 this.addBlocks();
+                world.foodEaten();
         }
-        world.setToSnakeBlock(this.getHeadBlock().getLocation());
-        snakeList.add(0, snakeList.remove(snakeList.size() - 1));
+        for (int k = 0; k < getBlocks().size(); k++){
+            world.setToSnakeBlock(this.getBlocks().get(k).getLocation());
+        }
+        
+        //world.setToSnakeBlock(this.getHeadBlock().getLocation());
+        snakeList.add(0, new SnakeBlock(newLocation));
+        snakeList.remove(snakeList.size() - 1);
         
 
     }
@@ -77,12 +88,14 @@ public class Snake {
     public void addBlocks() {
         //adds blocks to the arraylist at the tail location
         for (int i = 1; i <= 2; i++) {
-            snakeList.add(new SnakeBlock(this.getTailBlock()));
+            SnakeBlock s = new SnakeBlock(getTailBlock());
+            snakeList.add(s);
+            System.out.println("Block added");
         }
     }
     
     public void die(){
-        
+        System.out.println("Death");
     }
     
     public ArrayList<SnakeBlock> getBlocks() {

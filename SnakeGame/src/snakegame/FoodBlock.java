@@ -25,14 +25,18 @@ public class FoodBlock extends Block {
     
     public FoodBlock(SnakeWorld s){
         world = s;
-        color = Color.BLUE;
+        color = Color.ORANGE;
     }
-
+    public FoodBlock(Location loc){
+        location = loc;
+        color = Color.ORANGE;
+    }
     public void generateNewLocation(Snake s) {
         //TODO: make sure that the newly generated FoodBlock will not interfere with the Snake's SnakeBlock(s)
-        int boardHeight = 10;
-        int boardLength = 10;
+        int boardHeight = world.getNumRows();
+        int boardLength = world.getNumCols();
         boolean inSnake = false;
+        Location prevLoc = location;
         int randR = (int) (Math.random() * boardHeight);
         int randC = (int) (Math.random() * boardLength);
         Location loc = new Location(randR, randC);
@@ -46,6 +50,8 @@ public class FoodBlock extends Block {
         } else {
             location.setNewLocation(randR, randC);
         }
+        world.setToFoodBlock(location);
+        //world.setToBlock(prevLoc);
 
     }
 }

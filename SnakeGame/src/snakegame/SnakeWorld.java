@@ -52,6 +52,10 @@ public class SnakeWorld {
     public void setToSnakeBlock(Location loc){
         world[loc.getR()][loc.getC()] = new SnakeBlock(loc);
     }
+    
+    public void setToFoodBlock(Location loc){
+        world[loc.getR()][loc.getC()] = new FoodBlock(loc);
+    }
     public Snake getSnake(){
         return snake;
     }
@@ -61,16 +65,21 @@ public class SnakeWorld {
     public void init() {
         int randRow;
         int randCol;
+        int randDirection = (int)(Math.random() * 4 + 1);
         SnakeBlock s;
         randRow = (int)(Math.random() * world.length);
         randCol = (int)(Math.random() * world[0].length);
         s = new SnakeBlock(randRow, randCol);
+        
         ArrayList<SnakeBlock> list = new ArrayList<>();
         list.add(s);
-        int randDirection = (int)(Math.random() * 4 + 1);
+        //list.add(s2);
+        
         snake = new Snake(list, randDirection, this);
         score = 0;
         food = new FoodBlock(this);
+        
+        food.generateNewLocation(snake);
     }
     public void refresh(){
         snake.moveSnake();
