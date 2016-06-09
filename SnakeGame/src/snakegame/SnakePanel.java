@@ -9,8 +9,10 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 
 /**
  *
@@ -19,8 +21,9 @@ import java.awt.event.KeyListener;
 public class SnakePanel extends JPanel implements KeyListener{
 
     private SnakeWorld world;
-    int hight = 1000;
-    int width = 1000;
+    int hight =(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    
 
     public SnakePanel(SnakeWorld wrd) {
         super();
