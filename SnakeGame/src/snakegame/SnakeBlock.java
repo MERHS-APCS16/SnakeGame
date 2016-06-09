@@ -27,6 +27,12 @@ public class SnakeBlock extends Block{
         location = s.getLocation();
         color = Color.BLUE;
 }
-    
+    public String toString(){
+        String s;
+        s = "Row: " + this.location.getR() + " \nColumn: " + this.location.getC();
+        return s;
+        
+        
+    }
 }
 
