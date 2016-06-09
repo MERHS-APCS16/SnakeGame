@@ -52,14 +52,9 @@ public class Snake {
         Location newLocation = new Location(newR, newC);
         
         this.getTailBlock().moveBlock(newLocation);
-        String blockType = world.getBlockType(this.getHeadBlock().getLocation());
-        switch (blockType){
-            case "SnakeBlock":
-                this.die();
-                
-            case "FoodBlock":
-                this.addBlocks();
-                world.foodEaten();
+        Location foodBlockLocation = world.getFoodBlock().getLocation();
+        if (foodBlockLocation.isEqualTo(this.getHeadBlock().getLocation())){
+            addBlocks();
         }
         for (int k = 0; k < getBlocks().size(); k++){
             world.setToSnakeBlock(this.getBlocks().get(k).getLocation());
@@ -68,7 +63,9 @@ public class Snake {
         //world.setToSnakeBlock(this.getHeadBlock().getLocation());
         snakeList.add(0, new SnakeBlock(newLocation));
         snakeList.remove(snakeList.size() - 1);
-        
+        if (collision()){
+            this.die();
+        }
 
     }
 
@@ -84,14 +81,24 @@ public class Snake {
             direction = dir;
         }
     }
-
+    public boolean collision(){
+        for (int x = 2; x < this.getBlocks().size(); x++){
+            if (this.getHeadBlock().getLocation().isEqualTo(this.getBlocks().get(x).getLocation())){
+                return true;
+            }
+        }
+        
+        
+        return false;
+    }
     public void addBlocks() {
         //adds blocks to the arraylist at the tail location
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 1; i++) {
             SnakeBlock s = new SnakeBlock(getTailBlock());
             snakeList.add(s);
             System.out.println("Block added");
         }
+        world.foodEaten();
     }
     
     public void die(){
