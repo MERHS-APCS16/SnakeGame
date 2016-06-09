@@ -62,6 +62,10 @@ public class SnakeWorld {
     public Block[][] getWorld(){
         return world;
     }
+    public FoodBlock getFoodBlock(){
+        return food;
+    }
+    
     public void init() {
         int randRow;
         int randCol;
@@ -78,7 +82,7 @@ public class SnakeWorld {
         snake = new Snake(list, randDirection, this);
         score = 0;
         food = new FoodBlock(this);
-        
+        food.moveBlock(2,2);
         food.generateNewLocation(snake);
     }
     public void refresh(){

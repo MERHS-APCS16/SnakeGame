@@ -31,6 +31,9 @@ public class FoodBlock extends Block {
         location = loc;
         color = Color.ORANGE;
     }
+    
+    
+    
     public void generateNewLocation(Snake s) {
         //TODO: make sure that the newly generated FoodBlock will not interfere with the Snake's SnakeBlock(s)
         int boardHeight = world.getNumRows();
