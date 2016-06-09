@@ -21,14 +21,14 @@ import java.awt.event.KeyListener;
 public class SnakePanel extends JPanel implements KeyListener{
 
     private SnakeWorld world;
-    int hight =(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    int height =(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     
 
     public SnakePanel(SnakeWorld wrd) {
         super();
         world = wrd;
-        setPreferredSize(new Dimension(hight, width));
+        setPreferredSize(new Dimension(height, width));
         setBackground(Color.GREEN);
         setFocusable(true);
         requestFocus();
@@ -101,7 +101,7 @@ public class SnakePanel extends JPanel implements KeyListener{
                     g.setColor((world.getWorld()[r][c]).color);
                 }
 
-                int blockHight = (hight) / (world.getWorld().length);
+                int blockHight = (height) / (world.getWorld().length);
                 int blockWidth = (width) / (world.getWorld()[0].length);
 
                 g.fillRect((r * blockWidth), (c * blockHight), blockWidth, blockHight);
