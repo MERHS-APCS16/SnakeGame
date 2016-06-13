@@ -55,6 +55,9 @@ public class Snake {
         Location foodBlockLocation = world.getFoodBlock().getLocation();
         if (foodBlockLocation.isEqualTo(this.getHeadBlock().getLocation())){
             addBlocks();
+            addBlocks();
+            world.foodEaten();
+            //addBlocks();
         }
         for (int k = 0; k < getBlocks().size(); k++){
             world.setToSnakeBlock(this.getBlocks().get(k).getLocation());
@@ -98,7 +101,7 @@ public class Snake {
             snakeList.add(s);
             System.out.println("Block added");
         }
-        world.foodEaten();
+        
     }
     
     public void die(){

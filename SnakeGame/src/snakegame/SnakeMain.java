@@ -21,7 +21,12 @@ public class SnakeMain {
         int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
         JFrame frame = new JFrame();
-        SnakeWorld world = new SnakeWorld(100, (100 / height) * width);
+        //System.out.println("Width: " + width);
+        //System.out.println("Height: " + height);
+        
+        //SnakeWorld world = new SnakeWorld(100, 100);
+        SnakeWorld world = new SnakeWorld(100, (100*width) / height);
+        world = new SnakeWorld((100 * width)/height, 100);
         world.init();
 
         SnakePanel panel = new SnakePanel(world);
